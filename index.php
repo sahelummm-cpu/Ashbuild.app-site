@@ -101,6 +101,22 @@ if ($path === '/app-ads.txt' || $path === '/ads.txt') {
     }
 }
 
+// GLOBAL: Handle /assets/ requests (Pouched & shared assets)
+if (strpos($path, '/assets/') === 0) {
+    $assetFile = substr($path, strlen('/assets/'));
+    $searchDirs = [
+        __DIR__ . '/portfolio/assets/',
+        __DIR__ . '/apps/pouched/assets/',
+        __DIR__ . '/apps/freed/assets/',
+        __DIR__ . '/apps/avolens/assets/',
+    ];
+    foreach ($searchDirs as $dir) {
+        if (file_exists($dir . $assetFile)) {
+            serveStatic($dir . $assetFile);
+        }
+    }
+}
+
 // =========================================================================
 // 1. MAIN DOMAIN: Developer Portfolio (ashbuild.app or www.ashbuild.app)
 // =========================================================================
@@ -117,6 +133,14 @@ if (empty($subdomain)) {
         }
     }
     
+    // Only serve portfolio index.html if request is root / or html
+    $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+    if ($ext !== '' && $ext !== 'html' && $ext !== 'htm' && $ext !== 'php') {
+        http_response_code(404);
+        echo "404 Not Found";
+        exit;
+    }
+
     // Serve portfolio main page
     $portfolioFile = __DIR__ . '/portfolio/index.html';
     if (file_exists($portfolioFile)) {
