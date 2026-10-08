@@ -1,0 +1,9 @@
+# Local Python Dev Server
+dev_server.py
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

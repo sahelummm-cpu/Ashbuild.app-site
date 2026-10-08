@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Respawn Maps</title>
+  <meta name="description" content="Respawn Maps privacy policy. No account, no profile, no tracking. Your location stays on your device." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="icon.png" alt="Respawn Maps Logo" class="nav-logo-img" />
+      <span class="nav-title">Respawn Maps</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#worlds">Styles</a>
+      <a href="privacy.html" style="color:var(--text-primary)">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="https://play.google.com/store/apps/details?id=app.Respawn.mobile" class="btn-nav" target="_blank" rel="noopener">Get on Play ↗</a>
+    </div>
+  </div>
+</nav>
+
+<div class="legal-page">
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: 24 August 2026</p>
+
+  <p>
+    Respawn Maps ("the app") is published by <strong>VOLTGENIX LLC</strong> (operating as <strong>Ash Build</strong>). This policy explains
+    what the app does with your data. The short version: there is no account, there is no profile,
+    and nothing you do in the app is tied to your name.
+  </p>
+
+  <h2>There is no account</h2>
+  <p>
+    The app has no sign-up, no login, and no user profile. We never ask for your name, email
+    address, phone number, or date of birth, and there is nowhere for you to enter them.
+  </p>
+
+  <h2>Location</h2>
+  <p>
+    The app asks for <strong>foreground location only</strong> — the permission Android calls
+    "while using the app". It does not have, and cannot request, background location access.
+    When you close the app or your screen turns off, location updates stop.
+  </p>
+  <p>Your location is used for three things:</p>
+  <ol>
+    <li><strong>Showing where you are</strong> on the map, and keeping the map centred as you move.</li>
+    <li><strong>Biasing search results toward you</strong>, so searching "high street" returns one near you rather than one on another continent.</li>
+    <li><strong>Turn-by-turn guidance</strong>, while the guidance screen is open.</li>
+  </ol>
+  <p>
+    Your coordinates are <strong>not stored on any server</strong> and are not written to a log.
+    They are used in memory on your device and sent to Mapbox — via our own proxy, described
+    below — only as part of a search or a directions request you initiated.
+  </p>
+
+  <h2>What leaves your device, and when</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>When</th>
+        <th>What is sent</th>
+        <th>Where it goes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>You type a search of 3+ characters</td>
+        <td>The text you typed, and a rounded approximate location to bias results</td>
+        <td>Our proxy → Mapbox Geocoding</td>
+      </tr>
+      <tr>
+        <td>You start guidance, or go off route</td>
+        <td>Your start coordinates and your destination coordinates</td>
+        <td>Our proxy → Mapbox Directions</td>
+      </tr>
+      <tr>
+        <td>The map draws tiles and fonts</td>
+        <td>Standard map tile requests</td>
+        <td>Mapbox, directly from the Maps SDK</td>
+      </tr>
+      <tr>
+        <td>You tap "Google Maps" on a destination</td>
+        <td>The destination coordinates</td>
+        <td>Google Maps, on your device</td>
+      </tr>
+      <tr>
+        <td>You buy or restore Pro</td>
+        <td>Purchase receipt and an anonymous random ID</td>
+        <td>RevenueCat and Google Play</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    Nothing else leaves the device. In particular, your saved places and your chosen map style
+    are never uploaded.
+  </p>
+
+  <h2>Our proxy</h2>
+  <p>
+    Search and directions requests pass through a small proxy server we run (a Supabase
+    Edge Function) before reaching Mapbox. It exists so we can rate-limit and
+    cache requests and rotate our Mapbox key without shipping a new app version.
+  </p>
+  <p>
+    The proxy <strong>does not log request URLs</strong>, so it does not log your search terms or
+    your coordinates. Its logs contain only error codes and timings. It caches geocoding responses
+    for up to 24 hours, keyed on the search text and the rounded proximity, and that cache is held
+    in memory and lost whenever the server restarts.
+  </p>
+
+  <h2>Mapbox</h2>
+  <p>
+    Mapbox provides the map, search, and directions. Mapbox's own analytics telemetry is
+    <strong>explicitly turned off</strong> by the app at startup. Mapbox's handling of the requests
+    it does receive is governed by their privacy policy:
+    <a href="https://www.mapbox.com/legal/privacy" target="_blank" rel="noopener">mapbox.com/legal/privacy</a>.
+  </p>
+
+  <h2>RevenueCat and Google Play</h2>
+  <p>
+    Purchases are processed by Google Play and managed through RevenueCat. RevenueCat identifies
+    you by a <strong>random anonymous ID</strong> it generates on your device; we never send it
+    your name, email, or any identifier you gave us, because we never had one. We can see that
+    <em>an</em> anonymous ID has an active subscription. We cannot see who you are.
+  </p>
+  <p>
+    Payment details are handled entirely by Google Play and never reach the app or us.
+    RevenueCat's policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a>.
+  </p>
+
+  <h2>What stays on your device</h2>
+  <p>Stored locally, and never uploaded:</p>
+  <ul>
+    <li>Your chosen map style</li>
+    <li>Your saved places (name and coordinates)</li>
+    <li>Whether voice guidance is muted</li>
+    <li>A cache of recent search results, kept for up to 7 days and capped at 100 entries</li>
+  </ul>
+  <p>
+    Uninstalling the app deletes all of it. You can also clear the search cache and remove saved
+    places from within the app's Settings screen.
+  </p>
+
+  <h2>Advertising and tracking</h2>
+  <p>
+    <strong>There are no ads in this app, and there is no advertising SDK in it.</strong> We do
+    not sell or share your data with data brokers, ad networks, or analytics brokers. There is no
+    cross-app or cross-site tracking, and no advertising ID is read.
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    The app is not directed at children under 13 and we do not knowingly collect anything from
+    them. Since there is no account and no personal data collection, there is nothing for us to
+    delete on request.
+  </p>
+
+  <h2>Your rights, and deletion</h2>
+  <p>
+    Because there is no account, we hold no personal data about you to export or delete, and we
+    could not identify your data if you asked us to.
+  </p>
+  <ul>
+    <li><strong>To delete everything the app holds:</strong> uninstall it, or use Settings to clear saved places and the search cache.</li>
+    <li><strong>To delete purchase records:</strong> contact RevenueCat, or manage the subscription through Google Play.</li>
+  </ul>
+  <p>
+    If you are in the UK or EU, the lawful basis for the limited processing described here is
+    performance of a contract (delivering the map and search you asked for) and legitimate
+    interests (keeping the service running and within budget).
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    If this policy changes materially, the "last updated" date above changes and the new version
+    ships with the app update that caused the change.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    <strong>VOLTGENIX LLC</strong> (d/b/a Ash Build)<br />
+    17350 State Highway 249 Ste 220<br />
+    Houston, TX 77064-1132, United States<br />
+    Website: <a href="https://ashbuild.app/" target="_blank" rel="noopener">https://ashbuild.app/</a><br />
+    Email: <a href="mailto:Contact@ashbuild.app">Contact@ashbuild.app</a>
+  </p>
+
+  <hr />
+  <p style="font-size:.8rem;color:var(--muted)">Map data © Mapbox © OpenStreetMap.</p>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      © 2026 Respawn Maps. Published by <strong>VOLTGENIX LLC</strong> (operating as <strong>Ash Build</strong>).
+      <br>
+      <span style="color:var(--text-tertiary)">Map data © Mapbox © OpenStreetMap contributors.</span>
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="mailto:Contact@ashbuild.app">Support &amp; Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

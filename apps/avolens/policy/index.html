@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — AvoLens</title>
+<meta name="description" content="How the AvoLens calorie tracking app handles your data: local-first storage, optional account sync, transient AI meal-photo processing, Health Connect and Apple Health, and how to delete everything.">
+<link rel="canonical" href="https://avolens.ashbuild.app/privacy/">
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="stylesheet" href="../assets/style.css?v=2">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AvoLens">
+<meta property="og:title" content="Privacy Policy — AvoLens">
+<meta property="og:description" content="How the AvoLens calorie tracking app handles your data, and how to delete all of it.">
+<meta property="og:url" content="https://avolens.ashbuild.app/privacy/">
+<meta property="og:image" content="https://avolens.ashbuild.app/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy — AvoLens",
+  "url": "https://avolens.ashbuild.app/privacy/",
+  "description": "How the AvoLens calorie tracking app handles your data.",
+  "inLanguage": "en",
+  "datePublished": "2026-08-27",
+  "dateModified": "2026-08-27",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "AvoLens",
+    "url": "https://avolens.ashbuild.app/"
+  }
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/logo.png" alt="" width="28" height="28">AvoLens</a>
+    <nav class="site-nav">
+      <a href="../privacy/">Privacy</a>
+      <a href="../terms/">Terms</a>
+      <a href="../support/">Support</a>
+      <a href="../delete-account/">Delete data</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<h1>Privacy Policy</h1>
+<p class="meta">Effective 27 August 2026 · Last updated 27 August 2026 · Applies to the AvoLens
+mobile app (<code>app.avolens.mobile</code>) and this website.</p>
+
+<p class="lede">AvoLens is built local-first. The app works fully offline with your data on
+your device, an account is optional, and there is no advertising, analytics or attribution
+software anywhere in it.</p>
+
+<div class="card">
+  <h3>The short version</h3>
+  <ul>
+    <li>Your food log, weight and measurements live <strong>on your device</strong>. They only
+    leave it if you create an account and sync.</li>
+    <li><strong>Meal photos you scan are not stored.</strong> They are sent for AI analysis,
+    the nutrition estimate comes back, and the image is not saved to any database or bucket.</li>
+    <li><strong>No ads, no trackers, no analytics.</strong> Nothing is sold or shared for
+    marketing.</li>
+    <li>Health and fitness data is read-only and is <strong>never</strong> used for
+    advertising.</li>
+    <li>You can delete everything <a href="#deletion">in one tap, or by web request</a>.</li>
+  </ul>
+</div>
+
+<h2 id="who">1. Who we are</h2>
+<p>AvoLens is provided by Ash Build, based in
+Texas, United States (“AvoLens”, “we”, “us”). For privacy
+questions, contact <a href="mailto:avolens@ashbuild.app">avolens@ashbuild.app</a>.</p>
+<p>Where the EU or UK GDPR applies, we are the <em>data controller</em> for the data
+described below.</p>
+
+<h2 id="collect">2. What we collect, and when</h2>
+
+<p>Most of what AvoLens knows about you never leaves your phone. The table below is the
+complete list of data that can be transmitted off your device, and what triggers it.</p>
+
+<div class="table-scroll">
+<table>
+  <thead>
+    <tr><th>Data</th><th>When it leaves your device</th><th>Where it goes</th><th>Kept?</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Email address and display name</td>
+      <td>Only if you create an account</td>
+      <td>Supabase Auth</td>
+      <td>Until you delete the account</td>
+    </tr>
+    <tr>
+      <td>Food log, weight, BMI, body measurements, water, nutrient totals, medication log</td>
+      <td>Only while signed in, for cloud sync</td>
+      <td>Supabase — one access-controlled row per user</td>
+      <td>Until you delete the account</td>
+    </tr>
+    <tr>
+      <td>Progress photos</td>
+      <td>Only if you add them while signed in</td>
+      <td>Supabase — a private bucket only your account can read</td>
+      <td>Until you delete them or the account</td>
+    </tr>
+    <tr>
+      <td><strong>Meal photos and nutrition-label photos sent for AI analysis</strong></td>
+      <td>When you use photo or label scanning</td>
+      <td>Our server, then the AI provider (Google)</td>
+      <td><strong>No.</strong> Transient — processed and discarded, not written to any database or bucket</td>
+    </tr>
+    <tr>
+      <td>Text inputs (Voice transcripts, ingredient lookups, coach messages, meal plan and recipe requests)</td>
+      <td>When you use voice logging, ingredient lookup, or Avo AI</td>
+      <td>Our server, then the AI provider. Coach/plan requests include your day’s log and goals so answers are specific to you. Speech-to-text runs on your device.</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>AI usage counters</td>
+      <td>Each AI request while signed in</td>
+      <td>Supabase — user ID, date, request type and a count. <em>No content.</em></td>
+      <td>Deleted with your account</td>
+    </tr>
+    <tr>
+      <td>Purchase and subscription status</td>
+      <td>If you subscribe</td>
+      <td>RevenueCat, plus Google Play or Apple</td>
+      <td>As long as required for billing</td>
+    </tr>
+    <tr>
+      <td>Food and barcode lookups</td>
+      <td>When you search foods or scan a barcode</td>
+      <td>Open Food Facts — the search term or barcode only</td>
+      <td>Not by us</td>
+    </tr>
+    <tr>
+      <td>Crash records</td>
+      <td>Never automatically</td>
+      <td>Stored on your device; only sent if you choose to send a report</td>
+      <td>Local only</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>We do not collect</strong> advertising identifiers, location, contacts, browsing
+history, or device fingerprints. There is no analytics, advertising, attribution or
+crash-reporting SDK in the app.</p>
+
+<h2 id="health">3. Health and fitness data</h2>
+
+<p>With your permission, AvoLens reads a small amount of activity data so it can show your
+exercise stats and net calories:</p>
+<ul>
+  <li><strong>Android — Health Connect:</strong> active calories burned, steps, and exercise
+  sessions. Read-only.</li>
+  <li><strong>iOS — Apple Health (HealthKit):</strong> active energy, steps, and workouts.
+  Read-only.</li>
+</ul>
+
+<div class="callout">
+  <strong>How health data is and is not used</strong>
+  Data read through Health Connect or Apple Health is used only to display your own activity
+  inside the app and to calculate net calories. It is <strong>never</strong> used for
+  advertising or marketing, <strong>never</strong> sold, and <strong>never</strong> shared
+  with a third party or data broker. It is not used to train any machine-learning model. If
+  you are signed in, derived totals may be included in your own encrypted profile sync so
+  your figures match across your devices. AvoLens never writes data back to Health Connect
+  or Apple Health.
+</div>
+
+<p>You can withdraw this permission at any time — in Health Connect settings, in iOS
+Settings → Privacy &amp; Security → Health, or by turning the connection off in AvoLens
+under Settings. Revoking it stops all future reads immediately.</p>
+
+<p>The food, weight and medication information you enter yourself is health-related data
+too. Where the GDPR applies, we process it as a <em>special category</em> of personal data
+on the basis of your <strong>explicit consent</strong>, which you give by choosing to
+create an account and sync. You can withdraw that consent at any time by deleting your
+account.</p>
+
+<h2 id="ai">4. AI processing of your photos and text</h2>
+
+<p>Photo scanning, nutrition-label scanning, voice logging, AI ingredient lookup, and Avo AI (Coach, Custom Meal Plans, and Saved Recipes) send data to our
+server, which forwards it to <strong>Google</strong> (the Gemini API) for analysis and
+returns the result to your app.</p>
+<ul>
+  <li>The image or text is used <strong>only</strong> to produce that one response.</li>
+  <li>AvoLens does <strong>not</strong> store the image or the message. Our scanning endpoint
+  contains no database write and no file upload.</li>
+  <li>The data is <strong>not</strong> used to train AI models.</li>
+  <li>Google may retain inputs transiently for abuse monitoring under its own API terms.
+  See <a href="https://policies.google.com/privacy" rel="noopener">Google’s privacy
+  policy</a> and the <a href="https://ai.google.dev/gemini-api/terms" rel="noopener">Gemini
+  API additional terms</a>.</li>
+</ul>
+<p>If you would rather no image ever left your device, use manual entry and the food
+database search instead — both work without AI.</p>
+
+<h2 id="why">5. Why we process it (legal bases)</h2>
+
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Purpose</th><th>Legal basis (GDPR)</th></tr></thead>
+  <tbody>
+    <tr><td>Running the app you asked for — logging, targets, trends</td><td>Performance of a contract</td></tr>
+    <tr><td>Account creation and cloud sync</td><td>Performance of a contract</td></tr>
+    <tr><td>Health, fitness, and medication data</td><td>Explicit consent (Art. 9(2)(a))</td></tr>
+    <tr><td>AI scanning and the AI Coach</td><td>Performance of a contract, at your request</td></tr>
+    <tr><td>Processing subscriptions</td><td>Performance of a contract; legal obligation for tax records</td></tr>
+    <tr><td>Keeping the service secure and preventing abuse</td><td>Legitimate interests</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="sharing">6. Who we share data with</h2>
+
+<p>We do not sell your personal information and we do not share it for advertising,
+marketing, or cross-context behavioural advertising. We use a small number of service
+providers, each processing data only on our instructions:</p>
+
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Provider</th><th>What it handles</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Supabase</td><td>Accounts, profile sync, progress photos, usage counters</td><td>Encrypted in transit (HTTPS) and at rest</td></tr>
+    <tr><td>Google (Gemini API)</td><td>AI analysis of meal photos, labels, voice text, coach messages, meal plans and recipes</td><td>Transient processing; not stored by us; not used for model training</td></tr>
+    <tr><td>RevenueCat</td><td>Subscription status</td><td>Only if you subscribe</td></tr>
+    <tr><td>Google Play / Apple</td><td>Payment processing</td><td>We never see your card details</td></tr>
+    <tr><td>Open Food Facts</td><td>Food and barcode lookups</td><td>Receives the search term or barcode, not your identity</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>We may also disclose data if legally required to, or to protect the rights and safety of
+our users — and, if the app were ever transferred to a new owner, as part of that transfer,
+with notice to you beforehand.</p>
+
+<h2 id="transfers">7. International transfers</h2>
+<p>Our providers may process data in countries outside your own, including the United States.
+Where data is transferred out of the EEA or the UK, it is covered by the European
+Commission’s Standard Contractual Clauses or an equivalent approved safeguard in the
+provider’s data processing agreement.</p>
+
+<h2 id="retention">8. How long we keep it</h2>
+<ul>
+  <li><strong>On your device:</strong> until you delete the data, clear it in Settings, or
+  uninstall the app.</li>
+  <li><strong>Account and synced data:</strong> for as long as your account exists.</li>
+  <li><strong>After deletion:</strong> removed from live systems immediately and purged from
+  encrypted backups within <strong>30 days</strong>.</li>
+  <li><strong>Billing records:</strong> retained by the app stores for as long as tax and
+  accounting law requires, independently of us.</li>
+</ul>
+
+<h2 id="security">9. Security</h2>
+<p>All network traffic uses HTTPS. Synced data is protected by row-level access rules, so one
+account cannot read another’s. Progress photos live in a private bucket that is not publicly
+readable. Data at rest is encrypted by our hosting provider. No system is perfectly secure,
+so please use a strong, unique password.</p>
+
+<h2 id="rights">10. Your rights</h2>
+<p>Depending on where you live, you may have the right to access, correct, delete, restrict
+or object to the processing of your data, to receive a copy in a portable format, and to
+withdraw consent at any time. Two of these are built into the app and need no request:</p>
+<ul>
+  <li><strong>Portability</strong> — Settings → Data &amp; privacy → Export CSV gives you
+  your whole log, weights and measurements.</li>
+  <li><strong>Erasure</strong> — see below.</li>
+</ul>
+<p>For anything else, contact <a href="mailto:avolens@ashbuild.app">avolens@ashbuild.app</a>. We respond within
+30 days. If you are in the EEA or UK you may also complain to your local data protection
+authority.</p>
+<p><strong>California residents:</strong> we do not sell or share personal information as
+those terms are defined by the CCPA/CPRA, and we do not use it for cross-context behavioural
+advertising. You will never be discriminated against for exercising a privacy right.</p>
+
+<h2 id="deletion">11. Deleting your account and data</h2>
+<div class="card">
+  <h3>In the app — one tap</h3>
+  <p><strong>Settings → Data &amp; privacy → Delete account.</strong> This permanently
+  removes your account, your synced profile row, your progress photos, and your AI usage
+  counters, then wipes the local state on your device.</p>
+  <h3>From the web</h3>
+  <p>You do not need the app installed. See the
+  <a href="../delete-account/">account deletion request page</a>.</p>
+</div>
+
+<h2 id="children">12. Children</h2>
+<p>AvoLens is not intended for children under 13 — or under 16 where local law sets a higher
+age of digital consent. We do not knowingly collect data from children. If you believe a
+child has given us data, contact <a href="mailto:avolens@ashbuild.app">avolens@ashbuild.app</a> and we will
+delete it.</p>
+
+<h2 id="notmedical">13. Not medical advice</h2>
+<p>AvoLens is a tracking tool, not a medical device. Nutrition estimates, medication levels
+and coach replies are informational and can be wrong. They are not medical advice and are no
+substitute for your doctor or pharmacist. Never start, stop or change a dose based on this
+app. See the <a href="../terms/">Terms of Service</a>.</p>
+
+<h2 id="changes">14. Changes to this policy</h2>
+<p>If we make a material change we will update the date at the top and, for significant
+changes, notify you in the app before the change takes effect. Continuing to use AvoLens
+after that means you accept the updated policy.</p>
+
+<h2 id="contact">15. Contact</h2>
+<p>Privacy questions, requests, or complaints:
+<a href="mailto:avolens@ashbuild.app">avolens@ashbuild.app</a><br>
+Ash Build, Texas, United States</p>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav>
+      <a href="../">Home</a>
+      <a href="../privacy/">Privacy Policy</a>
+      <a href="../terms/">Terms of Service</a>
+      <a href="../support/">Support</a>
+      <a href="../delete-account/">Delete my data</a>
+    </nav>
+    <p>© 2026 AvoLens.</p>
+  </div>
+</footer>
+
+</body>
+</html>

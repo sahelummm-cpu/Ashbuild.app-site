@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ash Build — Independent Mobile Studio</title>
+  <meta name="description" content="Independent studio creating focused, privacy-first mobile applications for Android.">
+  <link rel="icon" type="image/png" href="/assets/avolens.png">
+
+  <!-- Apple-inspired Typography: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── Apple Design System Tokens ────────────────────────────── */
+    :root {
+      --bg: #fbfbfd;
+      --surface: #ffffff;
+      --surface-subtle: #f5f5f7;
+      --border: rgba(0, 0, 0, 0.08);
+      --border-strong: rgba(0, 0, 0, 0.14);
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #86868b;
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ed;
+      --apple-blue-subtle: rgba(0, 113, 227, 0.08);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+      --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+      --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Apple-style Frosted Navbar ───────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 251, 253, 0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: var(--text);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: var(--text);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.15s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .btn-contact-pill {
+      background: var(--text);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-contact-pill:hover {
+      background: #333336;
+      transform: scale(1.02);
+    }
+
+    /* ── Hero Section ─────────────────────────────────────────── */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--apple-blue);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.28rem);
+      color: var(--text-secondary);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* ── Section Title ────────────────────────────────────────── */
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+
+    .section-head p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* ── Apple-style Cards Grid ───────────────────────────────── */
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 72px;
+    }
+
+    .app-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .app-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .app-card-featured {
+      grid-column: span 2;
+    }
+
+    /* Card Banner Frame */
+    .card-media {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      background: var(--surface-subtle);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .app-card-featured .card-media {
+      height: 280px;
+    }
+
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.4s ease;
+    }
+
+    .app-card:hover .card-media img {
+      transform: scale(1.025);
+    }
+
+    /* Card Content */
+    .card-content {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+
+    .card-header {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .app-squircle-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    .app-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .app-pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--apple-blue);
+      background: var(--apple-blue-subtle);
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .card-body p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .pkg-label {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.76rem;
+      color: var(--text-tertiary);
+      margin-bottom: 22px;
+    }
+
+    /* Card Footer & Actions */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .btn-apple {
+      background: var(--apple-blue);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-apple:hover {
+      background: var(--apple-blue-hover);
+      transform: translateY(-1px);
+    }
+
+    .legal-links {
+      display: flex;
+      gap: 14px;
+    }
+
+    .legal-links a {
+      color: var(--apple-blue);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: opacity 0.15s ease;
+    }
+
+    .legal-links a:hover {
+      text-decoration: underline;
+      opacity: 0.85;
+    }
+
+    /* ── Apple-style Support Banner ───────────────────────────── */
+    .support-box {
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 32px;
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .support-box h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .support-box p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 28px;
+      line-height: 1.5;
+    }
+
+    .mail-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 28px;
+      border-radius: var(--radius-full);
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: var(--font-display);
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+    }
+
+    .mail-link-btn:hover {
+      background: var(--text);
+      color: #ffffff;
+      border-color: var(--text);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    /* ── Apple-style Minimalist Footer ────────────────────────── */
+    footer {
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      padding: 32px 0 40px;
+      color: var(--text-tertiary);
+      font-size: 0.82rem;
+      margin-top: auto;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-content a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-content a:hover {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .apps-grid { grid-template-columns: 1fr; }
+      .app-card-featured { grid-column: span 1; }
+      .card-media, .app-card-featured .card-media { height: 190px; }
+      .hero { padding: 56px 0 40px; }
+      .navbar { height: auto; padding: 14px 0; flex-direction: column; gap: 12px; }
+      .card-footer { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .footer-content { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Apple Frosted Navbar -->
+  <header>
+    <div class="container navbar">
+      <a href="/" class="brand">
+        <div class="brand-icon">⚡</div>
+        <span>Ash Build</span>
+      </a>
+      <nav>
+        <a href="#apps">Apps</a>
+        <a href="#support">Support</a>
+        <a href="mailto:contact@ashbuild.app" class="btn-contact-pill">
+          contact@ashbuild.app
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="eyebrow">Independent Mobile Studio</div>
+      <h1>Apps crafted with intention.</h1>
+      <p>Focused daily utilities, mindful habit trackers, and games engineered for Android with privacy at the core.</p>
+    </section>
+
+    <!-- App Showcase -->
+    <section id="apps">
+      <div class="section-head">
+        <h2>Published Applications</h2>
+        <p>Official product portals, store links, and documentation.</p>
+      </div>
+
+      <div class="apps-grid">
+
+        <!-- 1. FREED (FEATURED) -->
+        <article class="app-card app-card-featured">
+          <div class="card-media">
+            <img src="/assets/freed-banner.png" alt="Freed Feature Graphic">
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="card-header">
+                <img src="/assets/freed.png" alt="Freed Icon" class="app-squircle-icon">
+                <div class="app-info">
+                  <h3>Freed: Quit Vaping Tracker</h3>
+                  <span class="app-pill">Lifestyle & Habits</span>
+                </div>
+              </div>
+              <p>Break free from vaping progressively without the misery of cold turkey. Features adaptive daily limits, real-time nicotine detox simulation, craving breathwork, and clinical report export.</p>
+              <div class="pkg-label">Package: app.freed.mobile</div>
+            </div>
+            <div class="card-footer">
+              <a href="https://freed.ashbuild.app" class="btn-apple">Visit Site ↗</a>
+              <div class="legal-links">
+                <a href="https://freed.ashbuild.app/policy">Privacy Policy</a>
+                <a href="https://freed.ashbuild.app/terms">Terms</a>
+                <a href="https://freed.ashbuild.app/delete-account">Data Deletion</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. AVOLENS -->
+        <article class="app-card">
+          <div class="card-media">
+            <img src="/assets/avolens-banner.png" alt="AvoLens Banner">
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="card-header">
+                <img src="/assets/avolens.png" alt="AvoLens Icon" class="app-squircle-icon">
+                <div class="app-info">
+                  <h3>AvoLens: AI Calorie Counter</h3>
+                  <span class="app-pill">Health & AI</span>
+                </div>
+              </div>
+              <p>Snap a photo of any meal for instant, accurate macronutrient and calorie breakdown. Fast, frictionless nutrition tracking powered by computer vision.</p>
+              <div class="pkg-label">Package: app.avolens.mobile</div>
+            </div>
+            <div class="card-footer">
+              <a href="https://avolens.ashbuild.app" class="btn-apple">Visit Site ↗</a>
+              <div class="legal-links">
+                <a href="https://avolens.ashbuild.app/policy">Privacy Policy</a>
+                <a href="https://avolens.ashbuild.app/terms">Terms</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. POUCHED -->
+        <article class="app-card">
+          <div class="card-media">
+            <img src="/assets/pouched-banner.jpg" alt="Pouched Banner">
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="card-header">
+                <img src="/assets/pouched.png" alt="Pouched Icon" class="app-squircle-icon">
+                <div class="app-info">
+                  <h3>Pouched: Quit Nicotine Pouches</h3>
+                  <span class="app-pill">Health & Recovery</span>
+                </div>
+              </div>
+              <p>Dedicated cessation companion built specifically for quitting nicotine pouches (ZYN, Velo). Daily taper schedules, relapse tracking, and craving breathwork.</p>
+              <div class="pkg-label">Package: app.pouched.mobile</div>
+            </div>
+            <div class="card-footer">
+              <a href="https://pouched.ashbuild.app" class="btn-apple">Visit Site ↗</a>
+              <div class="legal-links">
+                <a href="https://pouched.ashbuild.app/policy">Privacy Policy</a>
+                <a href="https://pouched.ashbuild.app/terms">Terms</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. RESPAWN -->
+        <article class="app-card">
+          <div class="card-media">
+            <img src="/assets/respawn-banner.jpg" alt="Respawn Banner">
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="card-header">
+                <img src="/assets/respawn.png" alt="Respawn Icon" class="app-squircle-icon">
+                <div class="app-info">
+                  <h3>Respawn: Game Map IRL</h3>
+                  <span class="app-pill">Navigation & Games</span>
+                </div>
+              </div>
+              <p>Transforms real-world navigation into an open-world video game mini-map. Features retro, GTA, and fantasy styled HUDs with zero background tracking.</p>
+              <div class="pkg-label">Package: app.Respawn.mobile</div>
+            </div>
+            <div class="card-footer">
+              <a href="https://respawn.ashbuild.app" class="btn-apple">Visit Site ↗</a>
+              <div class="legal-links">
+                <a href="https://respawn.ashbuild.app/policy">Privacy Policy</a>
+                <a href="https://respawn.ashbuild.app/terms">Terms</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. UNPOPULAR OPINION -->
+        <article class="app-card">
+          <div class="card-media">
+            <img src="/assets/unpopular-banner.png" alt="Unpopular Opinion Banner">
+          </div>
+          <div class="card-content">
+            <div class="card-body">
+              <div class="card-header">
+                <img src="/assets/unpopularopinion.png" alt="Unpopular Opinion Icon" class="app-squircle-icon">
+                <div class="app-info">
+                  <h3>Unpopular Opinion: Party Game</h3>
+                  <span class="app-pill">Social & Trivia</span>
+                </div>
+              </div>
+              <p>The provocative party debate game. Vote on spicy, controversial hot takes, compare percentage answers with opponents, and spark discussions.</p>
+              <div class="pkg-label">Package: mobile.UnpopularOpinion.game</div>
+            </div>
+            <div class="card-footer">
+              <a href="https://unpopular-opinion.ashbuild.app" class="btn-apple">Visit Site ↗</a>
+              <div class="legal-links">
+                <a href="https://unpopular-opinion.ashbuild.app/policy">Privacy Policy</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="support-box">
+      <h2>Studio Support</h2>
+      <p>Have inquiries, need support with an active purchase, want to request account or data deletion, or report a bug? We are here to help.</p>
+      <a href="mailto:contact@ashbuild.app" class="mail-link-btn">
+        ✉️ contact@ashbuild.app
+      </a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <p>&copy; 2026 <strong>Ash Build</strong>. All rights reserved.</p>
+      </div>
+      <div>
+        <a href="mailto:contact@ashbuild.app">contact@ashbuild.app</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
