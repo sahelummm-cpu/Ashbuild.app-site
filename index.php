@@ -91,15 +91,29 @@ function serveStatic($file) {
     exit;
 }
 
+// GLOBAL: Google AdMob / AdSense verification (app-ads.txt & ads.txt)
+if ($path === '/app-ads.txt' || $path === '/ads.txt') {
+    $adsFile = __DIR__ . '/app-ads.txt';
+    if (file_exists($adsFile)) {
+        header('Content-Type: text/plain; charset=UTF-8');
+        readfile($adsFile);
+        exit;
+    }
+}
+
 // =========================================================================
 // 1. MAIN DOMAIN: Developer Portfolio (ashbuild.app or www.ashbuild.app)
 // =========================================================================
 if (empty($subdomain)) {
-    // Check if requesting static assets inside portfolio
+    // Check root files first (app-ads.txt, robots.txt, sitemap.xml, etc.)
     if ($path !== '/') {
-        $candidate = __DIR__ . '/portfolio' . $path;
-        if (file_exists($candidate) && !is_dir($candidate)) {
-            serveStatic($candidate);
+        $rootCandidate = __DIR__ . $path;
+        if (file_exists($rootCandidate) && !is_dir($rootCandidate)) {
+            serveStatic($rootCandidate);
+        }
+        $portfolioCandidate = __DIR__ . '/portfolio' . $path;
+        if (file_exists($portfolioCandidate) && !is_dir($portfolioCandidate)) {
+            serveStatic($portfolioCandidate);
         }
     }
     
