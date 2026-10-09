@@ -1,0 +1,266 @@
+/* DuoClash — one stylesheet, no external requests (no CDN, no web font, no analytics).
+   Palette mirrors the game: charcoal tabletop, RED vs BLUE, gold for the cup.
+   Every DuoClash asset is prefixed "duoclash-" because the ashbuild.app router serves
+   /assets/ from other apps' folders first. */
+
+:root {
+  --bg: #12161b;
+  --surface: #1c2026;
+  --surface2: #232831;
+  --border: #2f3540;
+  --ink: #f1f3f6;
+  --muted: #a3abb7;
+  --faint: #7b8492;
+  --red: #ff4840;
+  --blue: #468cff;
+  --gold: #ffc23d;
+  --radius: 16px;
+  --maxw: 760px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- header / footer ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand img { width: 30px; height: 30px; border-radius: 8px; }
+.brand .r { color: var(--red); }
+.brand .b { color: var(--blue); }
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+  font-size: 15px;
+}
+
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover { color: var(--ink); text-decoration: underline; }
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 64px;
+  padding: 28px 0 44px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.site-footer nav { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; }
+.site-footer a { color: var(--muted); }
+
+/* ---------- type ---------- */
+
+h1 {
+  font-size: clamp(30px, 6vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin: 40px 0 14px;
+}
+
+h2 {
+  font-size: 23px;
+  letter-spacing: -0.02em;
+  margin: 46px 0 12px;
+  scroll-margin-top: 24px;
+}
+
+h3 { font-size: 17px; margin: 26px 0 8px; }
+
+a { color: var(--blue); text-underline-offset: 2px; }
+
+.lede { font-size: 19px; color: var(--muted); margin: 0 0 28px; }
+.meta { font-size: 14px; color: var(--faint); margin: 0 0 30px; }
+.muted { color: var(--muted); }
+
+ul, ol { padding-left: 22px; }
+li { margin: 6px 0; }
+
+code { font-size: 0.92em; background: var(--surface2); padding: 1px 6px; border-radius: 6px; }
+
+/* ---------- components ---------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin: 22px 0;
+}
+
+.card h3 { margin-top: 0; }
+.card :last-child { margin-bottom: 0; }
+
+.callout {
+  border-left: 3px solid var(--gold);
+  background: var(--surface);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 20px;
+  margin: 24px 0;
+}
+
+.callout strong { display: block; margin-bottom: 4px; }
+
+.btn {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--ink);
+}
+
+.btn:hover { opacity: 0.9; }
+
+.btn.secondary { background: transparent; color: var(--ink); border-color: var(--border); }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 26px 0 8px; }
+
+.table-scroll { overflow-x: auto; margin: 22px 0; }
+
+table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 15.5px; }
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+th { font-weight: 600; background: var(--surface); }
+
+details { border-bottom: 1px solid var(--border); padding: 14px 0; }
+summary { cursor: pointer; font-weight: 600; font-size: 17px; }
+details p { margin: 10px 0 0; color: var(--muted); }
+
+/* ---------- landing ---------- */
+
+.hero {
+  display: flex;
+  gap: 26px;
+  align-items: center;
+  margin: 44px 0 10px;
+}
+
+.hero img.icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 28px;
+  flex-shrink: 0;
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.7);
+}
+
+.hero h1 { margin: 0 0 6px; }
+.hero .r { color: var(--red); }
+.hero .b { color: var(--blue); }
+.hero p { margin: 0; color: var(--muted); font-size: 18px; }
+
+.shots {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 2px 14px;
+  margin: 30px 0 10px;
+}
+
+.shots img {
+  width: 200px;
+  height: auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+.games {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.games li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin: 0;
+}
+
+.games b { display: block; }
+.games span { color: var(--muted); font-size: 15px; }
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0;
+  display: grid;
+  gap: 12px;
+}
+
+.features li {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 0;
+}
+
+.features li:nth-child(odd) { border-left-color: var(--red); }
+.features b { display: block; margin-bottom: 2px; }
+.features span { color: var(--muted); font-size: 15.5px; }
+
+@media (max-width: 560px) {
+  body { font-size: 16.5px; }
+  .site-nav { gap: 14px; font-size: 14.5px; width: 100%; margin-left: 0; }
+  .hero { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .hero img.icon { width: 96px; height: 96px; border-radius: 22px; }
+  .shots img { width: 170px; }
+}
