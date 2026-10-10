@@ -10,6 +10,7 @@
  * - respawn.ashbuild.app
  * - unpopularopinion.ashbuild.app (and unpopular-opinion.ashbuild.app)
  * - duoclash.ashbuild.app
+ * - squishybun.ashbuild.app (and squishy-bun.ashbuild.app)
  * 
  * Clean URLs supported automatically:
  * - /policy
@@ -45,6 +46,8 @@ $appMap = [
     'unpopularopinion' => 'unpopularopinion',
     'unpopular-opinion' => 'unpopularopinion',
     'duoclash' => 'duoclash',
+    'squishybun' => 'squishybun',
+    'squishy-bun' => 'squishybun',
 ];
 
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
