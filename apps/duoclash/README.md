@@ -1,6 +1,6 @@
 # DuoClash site
 
-Landing page and legal pages for **DuoClash: 2 Player Games 1v1** (`com.duoclash.twoplayergames`), served at
+Landing page and legal pages for **DuoClash: 2 Player Games 1v1** (`game.duoclash.mobile`), served at
 **https://duoclash.ashbuild.app/** by the root `index.php` router (`duoclash` in `$appMap`), and at
 `https://ashbuild.app/apps/duoclash/`.
 
