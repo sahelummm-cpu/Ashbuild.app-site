@@ -48,6 +48,7 @@ $appMap = [
     'duoclash' => 'duoclash',
     'squishybun' => 'squishybun',
     'squishy-bun' => 'squishybun',
+    'trycut' => 'trycut',
 ];
 
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';

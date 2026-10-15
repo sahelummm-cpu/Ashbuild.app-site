@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://trycut.ashbuild.app/sitemap.xml
