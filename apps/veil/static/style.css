@@ -1,0 +1,60 @@
+/* Veil site styles. One file shared by every page. Colors follow the app (iOS-style, light and dark). */
+:root { --bg:#F2F2F7; --card:#FFFFFF; --ink:#000000; --ink2:#5B5B62; --line:rgba(60,60,67,.18);
+  --accent:#5856D6; --accent-text:#4B49C4; --on-accent:#FFFFFF; --soft:#E9E8FB; --on:#34C759;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif; --wrap:1040px; color-scheme:light dark; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#000000; --card:#1C1C1E; --ink:#FFFFFF; --ink2:#AEAEB8; --line:rgba(84,84,88,.65);
+    --accent:#5E5CE6; --accent-text:#9C9AFF; --soft:#25244A; --on:#30D158; }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.6 var(--sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--accent-text);text-underline-offset:3px}
+.wrap{width:min(var(--wrap),100% - 40px);margin-inline:auto}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:1.12;margin:0}
+.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:56px;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:-.02em}
+.brand img{border-radius:9px}
+.nav-links{display:flex;gap:22px;font-size:15px;font-weight:500}
+.nav-links a{color:var(--ink2);text-decoration:none}
+.nav-links a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 28px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:600;text-decoration:none;border:0}
+.btn.soft{background:var(--soft);color:var(--accent-text)}
+.btn.off{background:var(--soft);color:var(--ink2);cursor:default}
+.hero{padding:clamp(48px,9vw,110px) 0 clamp(32px,6vw,70px)}
+.hero .wrap{display:grid;gap:48px;grid-template-columns:1.15fr .85fr;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,76px)}
+.hero h1 span{background:linear-gradient(135deg,#8E7CFF,#5856D6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:20px;color:var(--ink2);max-width:30em;margin:20px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero .icon{justify-self:center;width:min(300px,70%);border-radius:22.5%;box-shadow:0 30px 70px -18px rgba(88,86,214,.55)}
+.small{color:var(--ink2);font-size:14px}
+.features{padding:20px 0 64px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(3,1fr)}
+.card{background:var(--card);border-radius:22px;padding:24px}
+.card h3{font-size:21px;margin-bottom:6px}
+.card p{margin:0;color:var(--ink2);font-size:16px}
+.pill{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:#fff;padding:2px 9px;border-radius:999px;background:linear-gradient(135deg,#8E7CFF,#5856D6);vertical-align:middle;margin-left:6px}
+.doc-hero{padding:clamp(40px,6vw,76px) 0 20px}
+.doc-hero h1{font-size:clamp(34px,5vw,54px)}
+.doc-hero p{color:var(--ink2);margin:10px 0 0}
+.doc-body{max-width:740px;padding:8px 0 72px}
+.doc-body h2{font-size:24px;margin:40px 0 8px}
+.doc-body li{margin:6px 0}
+.callout{background:var(--soft);border-radius:18px;padding:16px 20px;margin:16px 0 8px}
+.callout p{margin:0}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:16px;overflow:hidden;font-size:15px;margin:12px 0}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink2)}
+tr:last-child td{border-bottom:0}
+.contact-card{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;background:var(--card);border-radius:22px;padding:20px 24px}
+.contact-card p{margin:2px 0 0;color:var(--ink2)}
+footer{border-top:1px solid var(--line);padding:34px 0 46px;color:var(--ink2);font-size:15px}
+footer .foot{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between}
+footer ul{list-style:none;margin:8px 0 0;padding:0}
+footer li{margin:6px 0}
+footer a{color:var(--ink2)}
+footer h4{margin:0;color:var(--ink);font-size:13px;letter-spacing:.05em;text-transform:uppercase}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero .icon{order:-1;width:110px;justify-self:start}.grid{grid-template-columns:1fr}.nav-links a:not(:last-child){display:none}th,td{padding:9px 10px}}
