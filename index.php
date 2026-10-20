@@ -12,6 +12,7 @@
  * - duoclash.ashbuild.app
  * - squishybun.ashbuild.app (and squishy-bun.ashbuild.app)
  * - veil.ashbuild.app
+ * - eggthief.ashbuild.app (and egg-thief.ashbuild.app)
  * 
  * Clean URLs supported automatically:
  * - /policy
@@ -51,6 +52,8 @@ $appMap = [
     'squishy-bun' => 'squishybun',
     'trycut' => 'trycut',
     'veil' => 'veil',
+    'eggthief' => 'eggthief',
+    'egg-thief' => 'eggthief',
 ];
 
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';
