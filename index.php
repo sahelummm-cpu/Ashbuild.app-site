@@ -54,6 +54,7 @@ $appMap = [
     'veil' => 'veil',
     'eggthief' => 'eggthief',
     'egg-thief' => 'eggthief',
+    'posebuddy' => 'posebuddy',
 ];
 
 $requestUri = $_SERVER['REQUEST_URI'] ?? '/';

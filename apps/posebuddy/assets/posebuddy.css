@@ -1,0 +1,24 @@
+/* PoseBuddy: one stylesheet, no external requests. Palette = app tokens (sky blue on ink).
+   Assets are prefixed "posebuddy-" because the router serves /assets/ from other apps first. */
+:root{--bg:#0B0F14;--surface:#151A21;--border:#2A323D;--ink:#F2F8FC;--muted:#A3B3C0;--apricot:#6FC4F5;--butter:#CFEFFC;--on:#0A1A28;--maxw:740px;color-scheme:dark}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+a{color:var(--butter)}
+.site-header{border-bottom:1px solid var(--border);padding:16px 0}
+.site-header .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.brand img{border-radius:9px}.brand b,h1 b{color:var(--apricot)}
+.site-nav{margin-left:auto;display:flex;gap:18px;font-size:15px}
+.site-nav a{color:var(--muted);text-decoration:none}.site-nav a:hover{color:var(--ink);text-decoration:underline}
+h1{font-size:34px;line-height:1.15;letter-spacing:-.02em;margin:36px 0 8px}
+h2{font-size:22px;margin:32px 0 6px}
+.lede{font-size:19px;color:var(--muted)}
+.meta{color:var(--muted);font-size:14px}
+.btn{display:inline-block;background:var(--apricot);color:var(--on);font-weight:700;text-decoration:none;padding:13px 22px;border-radius:14px;margin:8px 8px 8px 0}
+.btn.secondary{background:var(--surface);color:var(--ink);border:1px solid var(--border)}
+ul.features{padding:0;list-style:none}ul.features li{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 16px;margin:10px 0}
+ul.features b{display:block}ul.features span{color:var(--muted);font-size:15px}
+details{border-bottom:1px solid var(--border);padding:10px 0}summary{cursor:pointer;font-weight:600}
+.site-footer{border-top:1px solid var(--border);margin-top:48px;padding:24px 0;font-size:14px;color:var(--muted)}
+.site-footer nav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}.site-footer a{color:var(--muted)}
