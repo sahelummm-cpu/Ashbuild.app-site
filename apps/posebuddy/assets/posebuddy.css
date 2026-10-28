@@ -22,3 +22,6 @@ ul.features b{display:block}ul.features span{color:var(--muted);font-size:15px}
 details{border-bottom:1px solid var(--border);padding:10px 0}summary{cursor:pointer;font-weight:600}
 .site-footer{border-top:1px solid var(--border);margin-top:48px;padding:24px 0;font-size:14px;color:var(--muted)}
 .site-footer nav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px}.site-footer a{color:var(--muted)}
+.shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 0 14px;margin:20px 0 4px;-webkit-overflow-scrolling:touch}
+.shots img{flex:0 0 auto;width:200px;height:auto;border-radius:16px;scroll-snap-align:start;background:var(--surface)}
+@media (min-width:760px){.shots img{width:220px}}
